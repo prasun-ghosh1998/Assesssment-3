@@ -2,12 +2,13 @@ import {
   Table, TableBody, TableCell,
   TableHead, TableRow, Button, TextField
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, updateQuantity } from "../store/slices/cartSlice";
+import { useAppDispatch, useAppSeletor } from "../service/helper/redux";
 
 const Cart = () => {
-  const { items } = useSelector(state => state.cart);
-  const dispatch = useDispatch();
+  const { items } = useAppSeletor(state => state.cart);
+  const dispatch = useAppDispatch();
 
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
